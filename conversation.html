@@ -1,28 +1,50 @@
 <!doctype html>
 <html ng-app="conversationModule">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/chat.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="js/conversation.js"></script>
-    <base href="/" />
+    <base href="/"/>
 </head>
 <body>
-<h1>Conversation</h1>
-<div ng-controller="conversationModuleController as conversationModule">
-
-    <h2>with: {{conversationModule.conversation.otherSidePublicToken}} </h2>
-    <div id="messages">
-        <ul>
-            <li ng-repeat="message in conversationModule.conversation.messages">
-                {{message.sender}} : {{message.msg}}
-            </li>
-        </ul>
-    </div>
-    <div>
-        <form ng-submit="conversationModule.send()">
-            <textarea ng-model="conversationModule.myMessage"
-                   placeholder="add your message here"></textarea>
-            <input type="submit" value="add"/>
-        </form>
+<div class="chat_window">
+    <div ng-controller="conversationModuleController as conversationModule">
+        <div class="top_menu">
+            <div class="title">
+                <h2>Chat with: {{conversationModule.conversation.otherSidePublicToken}} </h2>
+            </div>
+        </div>
+        <div id="messages">
+            <ul class="messages">
+                <li ng-repeat="message in conversationModule.conversation.messages track by $index"
+                    class="message appeared {{message.sender === 'me'?'right':'left'}}">
+                    <div class="avatar">
+                        <img
+                            src="https://robohash.org/{{message.sender === 'me'?conversationModule.conversation.receiveOnConvToken:conversationModule.conversation.sendToConvToken}}">
+                    </div>
+                    <div class="text_wrapper">
+                        <div class="text">{{message.msg}}</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="bottom_wrapper clearfix">
+            <form ng-submit="conversationModule.send()">
+                <div class="message_input_wrapper">
+                    <input type="text" ng-model="conversationModule.myMessage"
+                           placeholder="add your message here" class="message_input"/>
+                </div>
+                <div class="send_message">
+                    <div class="icon"></div>
+                    <div class="input">
+                        <input type="submit" value="Send" class="btn btn-primary-outline"/>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 </body>

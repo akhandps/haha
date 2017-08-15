@@ -1,22 +1,35 @@
 <!doctype html>
 <html ng-app="sendModule">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/chat.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="js/send.js"></script>
     <base href="/" />
 </head>
 <body>
-<h1>Send Message</h1>
+<div class="chat_window">
 <div ng-controller="sendModuleController as sendMessage">
-
-    <h2>Send Message To:<b>{{sendMessage.toToken}}</b></h2>
-    <div>
-        <form ng-submit="sendMessage.send()">
-            <textarea ng-model="sendMessage.message"
-                   placeholder="add your message here"></textarea>
-            <input type="submit" value="add"/>
-        </form>
+    <div class="top_menu">
+        <div class="title">
+            <h2>Send message to: {{sendMessage.toToken}}</h2>
+        </div>
     </div>
+    <div class="bottom_wrapper clearfix">
+        <div>
+            <form ng-submit="sendMessage.send()">
+                <textarea ng-model="sendMessage.message"
+                       placeholder="add your message here" rows="10" cols="105"></textarea>
+                <div class="send_message"><div class="icon"></div>
+                    <div class="input">
+                        <input type="submit" value="Send" class="btn btn-primary-outline"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </div>
 </body>
 </html>
