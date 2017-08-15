@@ -1,0 +1,22 @@
+<!doctype html>
+<html ng-app="sendModule">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="js/send.js"></script>
+    <base href="/" />
+</head>
+<body>
+<h1>Send Message</h1>
+<div ng-controller="sendModuleController as sendMessage">
+
+    <h2>Send Message To:<b>{{sendMessage.toToken}}</b></h2>
+    <div>
+        <form ng-submit="sendMessage.send()">
+            <textarea ng-model="sendMessage.message"
+                   placeholder="add your message here"></textarea>
+            <input type="submit" value="add"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

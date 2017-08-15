@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app="conversationModule">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="js/conversation.js"></script>
+    <base href="/" />
+</head>
+<body>
+<h1>Conversation</h1>
+<div ng-controller="conversationModuleController as conversationModule">
+
+    <h2>with: {{conversationModule.conversation.otherSidePublicToken}} </h2>
+    <div id="messages">
+        <ul>
+            <li ng-repeat="message in conversationModule.conversation.messages">
+                {{message.sender}} : {{message.msg}}
+            </li>
+        </ul>
+    </div>
+    <div>
+        <form ng-submit="conversationModule.send()">
+            <textarea ng-model="conversationModule.myMessage"
+                   placeholder="add your message here"></textarea>
+            <input type="submit" value="add"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

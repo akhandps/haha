@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app="receiveModule">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/chat.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="js/receive.js"></script>
+</head>
+<body>
+<div class="container clearfix">
+    <div ng-controller="receiveModuleController as receiveMessage">
+        <div class="page-header">
+            <h1>Message Board</h1>
+            <h2>Public Token: {{receiveMessage.publicToken}}</h2>
+            <small>
+                Share this <a href="send.html?token={{receiveMessage.publicToken}}">link</a>
+            </small>
+        </div>
+    <hr/>
+    <h2>
+        Received Messages!
+    </h2>
+    <div id="receivedMessages">
+        <ul  class="timeline">
+            <li ng-repeat="message in receiveMessage.receivedMessages">
+                <div class="timeline-badge">
+                    <img src="https://robohash.org/{{message.convID}}">
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">{{message.msg}}</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <a href="conversation.html?id={{message.convID}}">goto conversation</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <hr/>
+        <h2>
+            Sent Messages
+        </h2>
+    <div id="sentMessages">
+        <ul class="timeline">
+            <li ng-repeat="message in receiveMessage.sentMessages">
+                <div class="timeline-badge">
+                    <img src="https://robohash.org/{{message.convID}}">
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">{{message.msg}}</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <a href="conversation.html?id={{message.convID}}">goto conversation</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    </div>
+</div>
+</body>
+</html>
