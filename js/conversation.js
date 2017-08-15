@@ -20,6 +20,7 @@ angular.module('conversationModule', [])
           };
           updateConversation(conversationModule.myMessage, "me");
           $http.post(linkUrl, messageObject);
+          conversationModule.myMessage = "";
     };
 
     conversationModule.receiveMessage = function() {

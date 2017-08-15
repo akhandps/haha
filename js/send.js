@@ -19,6 +19,7 @@ angular.module('sendModule', [])
       };
 
       $http.post(linkUrl, messageObject);
+      sendModule.message = "";
     };
 
     /**
