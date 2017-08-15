@@ -10,7 +10,7 @@ angular.module('sendModule', [])
      * Basic send function to sen the given message, and initialize the conversation.
      */
     sendModule.send = function() {
-      var linkUrl = "http://httprelay.io/link/"+ sendModule.toToken;
+      var linkUrl = "https://httprelay.io/link/"+ sendModule.toToken;
       var senderPrivateConvToken = initializeConversation(sendModule.message, sendModule.toToken);
 
       var messageObject = {

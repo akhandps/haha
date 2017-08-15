@@ -18,7 +18,7 @@ angular.module('receiveModule', [])
      * receives the message
      */
     receiveModule.receiveMessage = function() {
-      var linkUrl = "http://httprelay.io/link/"+ receiveModule.publicToken;
+      var linkUrl = "https://httprelay.io/link/"+ receiveModule.publicToken;
       $http.get(linkUrl)
           .then(function(response) {
               var conversationID = initializeConversation(response.data);

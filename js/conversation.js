@@ -13,7 +13,7 @@ angular.module('conversationModule', [])
     };
 
     conversationModule.send = function() {
-          var linkUrl = "http://httprelay.io/link/"+ conversationModule.conversation.sendToConvToken;
+          var linkUrl = "https://httprelay.io/link/"+ conversationModule.conversation.sendToConvToken;
           var messageObject = {
             msg: conversationModule.myMessage,
             senderPrivateConvToken : conversationModule.conversation.receiveOnConvToken
@@ -23,7 +23,7 @@ angular.module('conversationModule', [])
     };
 
     conversationModule.receiveMessage = function() {
-        var linkUrl = "http://httprelay.io/link/"+ conversationModule.conversation.receiveOnConvToken;
+        var linkUrl = "https://httprelay.io/link/"+ conversationModule.conversation.receiveOnConvToken;
         $http.get(linkUrl)
           .then(function(response) {
               updateConversation(response.data.msg, "they", response.data.senderPrivateConvToken);
